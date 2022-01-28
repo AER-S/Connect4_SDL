@@ -6,6 +6,6 @@
 int main(int argc, char* args[])
 {
 	GameEngine connect4("CONNECT 4", WIDTH, HEIGHT);
-	SDL_Delay(5000);
+	connect4.Run();
 	return 0;
 }

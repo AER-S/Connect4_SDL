@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="Item.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
