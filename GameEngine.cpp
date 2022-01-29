@@ -59,7 +59,7 @@ void GameEngine::HandleEvents(SDL_Event* _events)
 
 void GameEngine::DrawActiveScene()
 {
-	sceneManger.GetActive()->Draw(screen);
+	sceneManger.GetActive()->Draw();
 }
 
 GameEngine::GameEngine(const char* _title, int _width, int _height)
@@ -67,7 +67,7 @@ GameEngine::GameEngine(const char* _title, int _width, int _height)
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
 	window = SDL_CreateWindow(_title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_RESIZABLE);
-	screen = SDL_GetWindowSurface(window);
+	screen = SDL_CreateRenderer(window, -1, 0);
 	sceneManger.SetActive(0);
 	run = true;
 }
@@ -79,12 +79,14 @@ void GameEngine::Run()
 	{
 		HandleEvents(&ev);
 		Update();
+		SDL_RenderClear(screen);
 		DrawActiveScene();
-		SDL_UpdateWindowSurface(window);
+		SDL_RenderPresent(screen);
+		SDL_Delay(100 / 6);
 	}
 }
 
-SDL_Surface* GameEngine::GetScreen()
+SDL_Renderer* GameEngine::GetScreen()
 {
 	return screen;
 }

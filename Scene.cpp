@@ -10,13 +10,13 @@ void Scene::AddItem(Item* _item)
 	}
 }
 
-void Scene::Draw(SDL_Surface* _screen)
+void Scene::Draw()
 {
 	if (!items.empty())
 	{
 		LOOP_THROUGH_ITEMS
 		{
-			(*i)->Draw(_screen);
+			(*i)->Draw();
 		}
 	}
 }

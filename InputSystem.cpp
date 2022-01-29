@@ -1,5 +1,8 @@
 #include "InputSystem.h"
 
+//debug
+//#include <iostream>
+
 InputSystem::InputSystem()
 {
 	used = true;
@@ -35,7 +38,7 @@ bool InputSystem::Use(bool* _trigger)
 	if (!used)
 	{
 		used = true;
-		bool state = _trigger;
+		bool state = *_trigger;
 		*_trigger = false;
 		return state;
 	}
@@ -49,4 +52,6 @@ void InputSystem::Trig(bool* _trigger)
 		used = false;
 		*_trigger = true;
 	}
+	//debug
+	//std::cout << "triggered!\n";
 }

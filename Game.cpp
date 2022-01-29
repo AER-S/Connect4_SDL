@@ -10,14 +10,16 @@ Game::Game(const char* _title, int _width/*=WIDTH*/, int _height/*=HEIGHT*/)
 
 void Game::Start()
 {
-	Item* bobi = new Item();
-	gameEngine->GetSceneManager()->GetScene(0)->AddItem(bobi);
-	Item* nounou = new Item();
-	nounou->LoadImage("Blue_ball.png",gameEngine->GetScreen());
+	SDL_Renderer* renderer = gameEngine->GetScreen();
+	InputSystem* inputSystem = gameEngine->GetInputSystem();
+	//Item* bobi = new Item(renderer,inputSystem);
+	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(bobi);
+	Item* nounou = new Item(renderer, inputSystem);
+	nounou->LoadImage("Blue_ball.png");
 	nounou->SetPosition(100, 200);
 	gameEngine->GetSceneManager()->GetScene(0)->AddItem(nounou);
 	Scene* secondScnene = new Scene();
-	Item* sousoou = new Item;
+	Item* sousoou = new Item(renderer,inputSystem);
 	sousoou->SetPosition(300, 300);
 	secondScnene->AddItem(sousoou);
 	gameEngine->GetSceneManager()->AddScene(secondScnene);

@@ -8,7 +8,7 @@ class Scene
 	std::vector<Item*> items;
 public:
 	void AddItem(Item* _item);
-	void Draw(SDL_Surface* _screen);
+	void Draw();
 	void Update();
 	~Scene();
 };

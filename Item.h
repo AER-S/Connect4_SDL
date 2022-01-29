@@ -1,18 +1,24 @@
 #pragma once
 #include <SDL.h>
+#include "InputSystem.h"
 #include <string>
 
 class Item
 {
-	SDL_Surface* image;
+	SDL_Renderer* renderer;
+	SDL_Texture* image;
 	SDL_Rect position;
+	InputSystem* inputSystem;
 
 public:
-	Item();
-	void Draw(SDL_Surface* _screen);
+	Item(SDL_Renderer* _renderer=NULL, InputSystem* _inputSystem=nullptr);
+	void Draw();
+	void SetInputSystem(InputSystem* _inputSystem);
+	void SetRenderer(SDL_Renderer* _renderer);
 	void Update();
 	void SetPosition(int _xpos, int _ypos);
-	bool LoadImage(std::string _filename, SDL_Surface* _screen);
+	void SetSize(int _witdth, int _height);
+	bool LoadImage(std::string _filename);
 	~Item();
 };
 

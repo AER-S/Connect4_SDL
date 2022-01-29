@@ -8,7 +8,7 @@
 class GameEngine
 {
 	SDL_Window* window;
-	SDL_Surface* screen;
+	SDL_Renderer* screen;
 
 	SceneManager sceneManger;
 	InputSystem inputSystem;
@@ -22,7 +22,7 @@ class GameEngine
 public:
 	GameEngine(const char* _title, int _width, int _height);
 	void Run();
-	SDL_Surface* GetScreen();
+	SDL_Renderer* GetScreen();
 	SceneManager* GetSceneManager();
 	InputSystem* GetInputSystem();
 	~GameEngine();
