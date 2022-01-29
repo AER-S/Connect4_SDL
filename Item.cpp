@@ -2,7 +2,7 @@
 #include <SDL_image.h>
 
 //Debug
-//#include <iostream>
+#include <iostream>
 
 Item::Item(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 {
@@ -38,6 +38,13 @@ void Item::Update()
 			position.x += 5;
 			//debug
 			//std::cout << position.x << std::endl;
+		}
+
+		if (inputSystem->Use(&(inputSystem->numbers[6])))
+		{
+			position.y += 5;
+			//debug
+			std::cout << position.y << std::endl;
 		}
 	}
 }

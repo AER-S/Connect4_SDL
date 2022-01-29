@@ -46,14 +46,17 @@ bool InputSystem::GetDown()
 
 bool InputSystem::Use(bool* _trigger)
 {
-	if (!used)
+	if (*_trigger)
 	{
-		used = true;
-		bool state = *_trigger;
-		*_trigger = false;
-		return state;
+		if (!used)
+		{
+			used = true;
+			bool state = *_trigger;
+			*_trigger = false;
+			return state;
+		}
 	}
-	else return false;
+	return false;
 }
 
 void InputSystem::Trig(bool* _trigger)
@@ -65,8 +68,8 @@ void InputSystem::Trig(bool* _trigger)
 			used = false;
 			*_trigger = true;
 			down = true;
+			//debug
+			//std::cout << "triggered!\n";
 		}
 	}
-	//debug
-	//std::cout << "triggered!\n";
 }
