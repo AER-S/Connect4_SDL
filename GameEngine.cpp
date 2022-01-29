@@ -2,6 +2,9 @@
 #include <SDL_image.h>
 #include "Item.h"
 
+//debug
+#include <iostream>
+
 
 void GameEngine::HandleEvents(SDL_Event* _events)
 {
@@ -51,6 +54,10 @@ void GameEngine::HandleEvents(SDL_Event* _events)
 			default:
 				break;
 			}
+			break;
+		case SDL_KEYUP:
+			inputSystem.SetDown(false);
+			break;
 		default:
 			break;
 		}

@@ -10,6 +10,7 @@ InputSystem::InputSystem()
 	vertical = 0;
 	fire = false;
 	enter = false;
+	down = false;
 	numbers = new bool[10]{};
 }
 
@@ -33,6 +34,16 @@ float InputSystem::GetVertical()
 	return vertical;
 }
 
+void InputSystem::SetDown(bool _state)
+{
+	down = _state;
+}
+
+bool InputSystem::GetDown()
+{
+	return down;
+}
+
 bool InputSystem::Use(bool* _trigger)
 {
 	if (!used)
@@ -47,10 +58,14 @@ bool InputSystem::Use(bool* _trigger)
 
 void InputSystem::Trig(bool* _trigger)
 {
-	if (used)
+	if (!down)
 	{
-		used = false;
-		*_trigger = true;
+		if (used)
+		{
+			used = false;
+			*_trigger = true;
+			down = true;
+		}
 	}
 	//debug
 	//std::cout << "triggered!\n";
