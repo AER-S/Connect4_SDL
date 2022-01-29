@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <string>
 
 class Item
 {
@@ -9,6 +10,9 @@ class Item
 public:
 	Item();
 	void Draw(SDL_Surface* _screen);
+	void Update();
+	void SetPosition(int _xpos, int _ypos);
+	bool LoadImage(std::string _filename, SDL_Surface* _screen);
 	~Item();
 };
 
