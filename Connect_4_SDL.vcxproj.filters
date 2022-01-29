@@ -16,6 +16,9 @@
     <Filter Include="Source Files\GameEngine">
       <UniqueIdentifier>{22e6648b-bf42-4ce7-849a-7703d9516748}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{88c2a661-2524-4361-a485-a4afd4e9e3d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="InputSystem.cpp">
       <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="TitleBanner.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -59,9 +65,66 @@
     <ClInclude Include="InputSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TitleBanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Blue_ball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Connet_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Red_ball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Htp_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Back_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Back_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Back_orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Back_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Htp_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Htp_orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Htp_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Play_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Play_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Play_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Rules_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Rules_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Rules_orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Rules_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Play_orange.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

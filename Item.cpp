@@ -13,11 +13,12 @@ Item::Item(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	position.h = 100;
 	inputSystem = _inputSystem;
 	renderer = _renderer;
+	visible = true;
 }
 
 void Item::Draw()
 {
-	if (image)
+	if (visible && image)
 	{
 		SDL_RenderCopy(renderer, image, NULL, &position);
 	}
@@ -28,6 +29,7 @@ void Item::SetInputSystem(InputSystem* _inputSystem)
 	inputSystem = _inputSystem;
 }
 
+/*
 void Item::Update()
 {
 	
@@ -47,7 +49,7 @@ void Item::Update()
 			std::cout << position.y << std::endl;
 		}
 	}
-}
+}*/
 
 void Item::SetPosition(int _xpos, int _ypos)
 {
@@ -61,6 +63,11 @@ void Item::SetSize(int _witdth, int _height)
 	position.h = _height;
 }
 
+void Item::SetVisible(bool _state)
+{
+	visible = _state;
+}
+
 bool Item::LoadImage(std::string _filename)
 {
 	if (image)
@@ -69,6 +76,7 @@ bool Item::LoadImage(std::string _filename)
 	}
 
 	SDL_Surface* newImage = IMG_Load(_filename.c_str());
+	if (!newImage) std::cout << "Error Loading Image";
 	image = SDL_CreateTextureFromSurface(renderer,newImage);
 	SDL_FreeSurface(newImage);
 	if (image)return true;

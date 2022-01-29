@@ -26,6 +26,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="TitleBanner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -34,9 +35,28 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="TitleBanner.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Back_blue.png" />
+    <Image Include="Back_green.png" />
+    <Image Include="Back_orange.png" />
+    <Image Include="Back_yellow.png" />
     <Image Include="Blue_ball.png" />
+    <Image Include="Connet_4.png" />
+    <Image Include="Htp_blue.png" />
+    <Image Include="Htp_green.png" />
+    <Image Include="Htp_orange.png" />
+    <Image Include="Htp_yellow.png" />
+    <Image Include="Play_blue.png" />
+    <Image Include="Play_green.png" />
+    <Image Include="Play_orange.png" />
+    <Image Include="Play_yellow.png" />
+    <Image Include="Red_ball.png" />
+    <Image Include="Rules_blue.png" />
+    <Image Include="Rules_green.png" />
+    <Image Include="Rules_orange.png" />
+    <Image Include="Rules_yellow.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
