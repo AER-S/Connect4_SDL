@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -28,10 +27,10 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="TitleBanner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="InputSystem.h" />
@@ -39,6 +38,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Selector.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="TitleBanner.h" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +62,10 @@
     <Image Include="Rules_green.png" />
     <Image Include="Rules_orange.png" />
     <Image Include="Rules_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Cruiser.ttf" />
+    <Font Include="Days_Later.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

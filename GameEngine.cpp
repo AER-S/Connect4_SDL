@@ -1,5 +1,6 @@
 #include "GameEngine.h"
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "Item.h"
 
 //debug
@@ -79,8 +80,11 @@ GameEngine::GameEngine(const char* _title, int _width, int _height)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
+	TTF_Init();
 	window = SDL_CreateWindow(_title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, SDL_WINDOW_SHOWN);
 	screen = SDL_CreateRenderer(window, -1, 0);
+	//SDL_SetRenderDrawColor(screen, 0, 100, 128, 255);
+	//SDL_RenderFillRect(screen, NULL);
 	sceneManger.SetActive(0);
 	run = true;
 }
@@ -120,6 +124,7 @@ GameEngine::~GameEngine()
 	window = nullptr;
 	SDL_Quit();
 	IMG_Quit();
+	TTF_Quit();
 }
 
 void GameEngine::Update()

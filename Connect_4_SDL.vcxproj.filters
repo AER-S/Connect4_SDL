@@ -45,11 +45,11 @@
     <ClCompile Include="TitleBanner.cpp">
       <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\GameEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Selector.cpp">
       <Filter>Source Files\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +74,10 @@
     <ClInclude Include="TitleBanner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="Selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Selector.h">
+    <ClInclude Include="Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -142,5 +142,9 @@
     <Image Include="Button.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Days_Later.ttf" />
+    <Font Include="Cruiser.ttf" />
   </ItemGroup>
 </Project>

@@ -1,9 +1,8 @@
 #include "Game.h"
 #include "TitleBanner.h"
-//#include "Button.h"
 #include "Selector.h"
 #include "Scene.h"
-
+#include "Text.h"
 
 Game::Game(const char* _title, int _width/*=WIDTH*/, int _height/*=HEIGHT*/)
 {
@@ -78,6 +77,11 @@ void Game::Start()
 	titleBanner2->SetSize(688, 115);
 	titleBanner2->SetPosition(60, 60);
 	HTP->AddItem(titleBanner2);
+	//**************** Rules line 1 *********************
+	Text* rule1 = new Text("1. Two Player (RED & BLUE) game.", 25, renderer, {0,128,255});
+	rule1->SetPosition(80, 250);
+	HTP->AddItem(rule1);
+
 	//****************************************************
 	
 }
