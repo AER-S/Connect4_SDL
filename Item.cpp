@@ -83,6 +83,11 @@ bool Item::LoadImage(std::string _filename)
 	else return false;
 }
 
+SDL_Rect Item::GetPosition()
+{
+	return position;
+}
+
 Item::~Item()
 {
 	if (image)

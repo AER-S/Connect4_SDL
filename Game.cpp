@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "TitleBanner.h"
-#include "Button.h"
+//#include "Button.h"
+#include "Selector.h"
 #include "Scene.h"
 
 
@@ -41,7 +42,7 @@ void Game::Start()
 	Item* howToPlay = new TitleBanner(renderer);
 	howToPlay->LoadImage("Htp_orange.png");
 	howToPlay->SetSize(408, 68);
-	howToPlay->SetPosition((width / 2) - 204, (height / 2) - 34);
+	howToPlay->SetPosition((width / 2) - 204, (height / 2) - 24);
 	lobby->AddItem(howToPlay);
 	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(HowToPlay);
 
@@ -49,17 +50,19 @@ void Game::Start()
 	Item* play = new TitleBanner(renderer);
 	play->LoadImage("Play_orange.png");
 	play->SetSize(178, 68);
-	play->SetPosition((width / 2) - 89, (height / 2) + 30);
+	play->SetPosition((width / 2) - 89, (height / 2) + 50);
 	lobby->AddItem(play);
 	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(play);
 
-	//************** Selection Button ***************
-	Item* selector = new Button(renderer, inputSystem, gameEngine->GetSceneManager());
+	//************** Selector **************************
+	Selector* selector = new Selector(renderer, inputSystem, gameEngine->GetSceneManager());
 	selector->LoadImage("Button.png");
 	selector->SetSize(620, 160);
-	selector->SetPosition((width / 2) - 310, (height / 2) - 75);
+	selector->AddItem(rules);
+	selector->AddItem(howToPlay);
+	selector->AddItem(play);
+	selector->Initialize();
 	lobby->AddItem(selector);
-	//gameEngine->GetSceneManager()->SetActive(0);
 	//**************************************************
 	gameEngine->GetSceneManager()->SetActive(lobby);
 	//***************************************************
