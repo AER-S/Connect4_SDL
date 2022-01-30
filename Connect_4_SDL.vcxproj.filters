@@ -43,7 +43,10 @@
       <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
     <ClCompile Include="TitleBanner.cpp">
-      <Filter>Source Files\Game</Filter>
+      <Filter>Source Files\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TitleBanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,6 +131,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Play_orange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Button.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -9,6 +9,7 @@ class SceneManager
 public:
 	SceneManager();
 	void SetActive(int _index);
+	void SetActive(Scene* _scene);
 	void AddScene(Scene* _newScene);
 	Scene* GetActive();
 	Scene* GetScene(int _index);

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="TitleBanner.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="InputSystem.h" />
@@ -43,6 +45,7 @@
     <Image Include="Back_orange.png" />
     <Image Include="Back_yellow.png" />
     <Image Include="Blue_ball.png" />
+    <Image Include="Button.png" />
     <Image Include="Connet_4.png" />
     <Image Include="Htp_blue.png" />
     <Image Include="Htp_green.png" />

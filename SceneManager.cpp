@@ -14,6 +14,11 @@ void SceneManager::SetActive(int _index)
 	}
 }
 
+void SceneManager::SetActive(Scene* _scene)
+{
+	activeScene = _scene;
+}
+
 void SceneManager::AddScene(Scene* _newScene)
 {
 	scesnes.push_back(_newScene);
