@@ -29,8 +29,26 @@ void Button::Initialize()
 	}
 }
 
-Button::Button(SDL_Renderer* _renderer /*= NULL*/, InputSystem* _inputSystem /*= nullptr*/):Item(_renderer,_inputSystem)
+void Button::Press()
 {
+	switch (step)
+	{
+	case 1:
+		sceneManager->SetActive(2);
+		break;
+	case 0:
+		sceneManager->SetActive(3);
+		break;
+	case -1:
+		sceneManager->SetActive(4);
+	default:
+		break;
+	}
+}
+
+Button::Button(SDL_Renderer* _renderer /*= NULL*/, InputSystem* _inputSystem /*= nullptr*/, SceneManager* _sceneManager /*= nullptr*/) :Item(_renderer, _inputSystem)
+{
+	sceneManager = _sceneManager;
 	step = 0;
 	initialized = false;
 	initXPos = 0;
@@ -48,6 +66,10 @@ void Button::Update()
 		if (inputSystem->Use(&(inputSystem->downKey)))
 		{
 			MoveDown();
+		}
+		if (inputSystem->Use(&(inputSystem->fire)))
+		{
+			Press();
 		}
 	}
 }

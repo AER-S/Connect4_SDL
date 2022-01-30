@@ -54,7 +54,7 @@ void Game::Start()
 	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(play);
 
 	//************** Selection Button ***************
-	Item* selector = new Button(renderer, inputSystem);
+	Item* selector = new Button(renderer, inputSystem, gameEngine->GetSceneManager());
 	selector->LoadImage("Button.png");
 	selector->SetSize(620, 160);
 	selector->SetPosition((width / 2) - 310, (height / 2) - 75);
@@ -63,6 +63,19 @@ void Game::Start()
 	//**************************************************
 	gameEngine->GetSceneManager()->SetActive(lobby);
 	//***************************************************
+	
+	//***************************************************
+	//***************** Second Scene ********************
+	//***************************************************
+	Scene* HTP = new Scene();
+	gameEngine->GetSceneManager()->AddScene(HTP);
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 60);
+	HTP->AddItem(titleBanner2);
+	//****************************************************
 	
 }
 

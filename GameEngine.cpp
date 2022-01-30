@@ -19,7 +19,7 @@ void GameEngine::HandleEvents(SDL_Event* _events)
 			switch (_events->key.keysym.sym)
 			{
 			case SDLK_RETURN:
-				//inputSystem.fire.Trig();
+				inputSystem.Trig(&(inputSystem.fire));
 				break;
 			case SDLK_0:
 				inputSystem.Trig(&(inputSystem.numbers[0]));
