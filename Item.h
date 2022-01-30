@@ -5,6 +5,7 @@
 
 class Item
 {
+protected:
 	SDL_Renderer* renderer;
 	SDL_Texture* image;
 	SDL_Rect position;

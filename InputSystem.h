@@ -10,6 +10,8 @@ class InputSystem
 
 public:
 	bool fire;
+	bool upKey;
+	bool downKey;
 	bool enter;
 	bool* numbers;
 	InputSystem();

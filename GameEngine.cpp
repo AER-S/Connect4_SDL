@@ -51,6 +51,12 @@ void GameEngine::HandleEvents(SDL_Event* _events)
 			case SDLK_9:
 				inputSystem.Trig(&(inputSystem.numbers[9]));
 				break;
+			case SDLK_UP:
+				inputSystem.Trig(&(inputSystem.upKey));
+				break;
+			case SDLK_DOWN:
+				inputSystem.Trig(&(inputSystem.downKey));
+				break;
 			default:
 				break;
 			}
