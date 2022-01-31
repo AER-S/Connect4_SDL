@@ -15,5 +15,7 @@ class Text :public Item
 public:
 	Text(const char* _text, int _size, SDL_Renderer* _renderer = NULL, SDL_Color _color = { 255, 255, 255 }, InputSystem* _inputSystem = nullptr);
 	void Update();
+	void SetColor(SDL_Color _color);
+	void SetText(const char* _text);
 };
 

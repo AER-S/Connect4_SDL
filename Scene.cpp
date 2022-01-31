@@ -32,6 +32,17 @@ void Scene::Update()
 	}
 }
 
+void Scene::Activate()
+{
+	if (!items.empty())
+	{
+		LOOP_THROUGH_ITEMS
+		{
+			(*i)->Reset();
+		}
+	}
+}
+
 Scene::~Scene()
 {
 	if (!items.empty())

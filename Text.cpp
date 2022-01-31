@@ -3,6 +3,7 @@
 
 void Text::MakeImage()
 {
+	if (image) SDL_DestroyTexture(image);
 	SDL_Surface* temp = TTF_RenderText_Solid(font, text, color);
 	image = SDL_CreateTextureFromSurface(renderer, temp);
 	position.h = temp->h;
@@ -22,4 +23,16 @@ Text::Text(const char* _text, int _size, SDL_Renderer* _renderer /*= NULL*/, SDL
 void Text::Update()
 {
 
+}
+
+void Text::SetColor(SDL_Color _color)
+{
+	color = _color;
+	MakeImage();
+}
+
+void Text::SetText(const char* _text)
+{
+	text = _text;
+	MakeImage();
 }

@@ -22,6 +22,8 @@ public:
 	void SetSize(int _witdth, int _height);
 	void SetVisible(bool _state);
 	bool LoadImage(std::string _filename);
+	void DeleteImage();
+	virtual void Reset();
 	SDL_Rect GetPosition();
 	~Item();
 };

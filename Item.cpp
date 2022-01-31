@@ -83,6 +83,20 @@ bool Item::LoadImage(std::string _filename)
 	else return false;
 }
 
+void Item::DeleteImage()
+{
+	if (image)
+	{
+		SDL_DestroyTexture(image);
+		image = nullptr;
+	}
+}
+
+void Item::Reset()
+{
+
+}
+
 SDL_Rect Item::GetPosition()
 {
 	return position;

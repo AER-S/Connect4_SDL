@@ -10,6 +10,7 @@ public:
 	void AddItem(Item* _item);
 	void Draw();
 	void Update();
+	void Activate();
 	~Scene();
 };
 

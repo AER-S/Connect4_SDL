@@ -4,6 +4,7 @@ SceneManager::SceneManager()
 {
 	Scene* newScene = new Scene();
 	scesnes.push_back(newScene);
+	activeScene = newScene;
 }
 
 void SceneManager::SetActive(int _index)
@@ -11,6 +12,7 @@ void SceneManager::SetActive(int _index)
 	if ((unsigned)_index <scesnes.size())
 	{
 		activeScene = scesnes[_index];
+		activeScene->Activate();
 	}
 }
 

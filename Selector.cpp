@@ -33,11 +33,11 @@ void Selector::Update()
 {
 	if (inputSystem)
 	{
-		if (inputSystem->Use(&(inputSystem->upKey)))
+		if (inputSystem->Use(&(inputSystem->upKey)) || inputSystem->Use(&(inputSystem->leftKey)))
 		{
 			MoveUp();
 		}
-		if (inputSystem->Use(&(inputSystem->downKey)))
+		if (inputSystem->Use(&(inputSystem->downKey))|| inputSystem->Use(&(inputSystem->rightKey)))
 		{
 			MoveDown();
 		}

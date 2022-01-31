@@ -12,8 +12,10 @@ public:
 	bool fire;
 	bool upKey;
 	bool downKey;
+	bool rightKey;
+	bool leftKey;
 	bool enter;
-	bool* numbers;
+
 	InputSystem();
 	void SetHorizontal(float _horizontal);
 	void SetVertical(float _vertical);

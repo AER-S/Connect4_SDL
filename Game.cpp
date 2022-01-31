@@ -1,8 +1,12 @@
+#include <sstream>
+#include <string>
 #include "Game.h"
 #include "TitleBanner.h"
 #include "LobbySelector.h"
 #include "Scene.h"
 #include "Text.h"
+#include "GameManager.h"
+#include "ColumnSelector.h"
 
 void Game::Lobby(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 {
@@ -15,7 +19,7 @@ void Game::Lobby(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	Item* titleBanner = new TitleBanner(_renderer);
 	titleBanner->LoadImage("Connet_4.png");
 	titleBanner->SetSize(688, 115);
-	titleBanner->SetPosition(60, 60);
+	titleBanner->SetPosition(60, 30);
 	lobby->AddItem(titleBanner);
 	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(titleBanner);
 
@@ -68,7 +72,7 @@ void Game::Rules(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	Item* titleBanner2 = new TitleBanner(_renderer);
 	titleBanner2->LoadImage("Connet_4.png");
 	titleBanner2->SetSize(688, 115);
-	titleBanner2->SetPosition(60, 60);
+	titleBanner2->SetPosition(60, 30);
 	rulesScene->AddItem(titleBanner2);
 
 	//************** Rules Banner ******************
@@ -136,7 +140,7 @@ void Game::HowToPlay(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	Item* titleBanner2 = new TitleBanner(_renderer);
 	titleBanner2->LoadImage("Connet_4.png");
 	titleBanner2->SetSize(688, 115);
-	titleBanner2->SetPosition(60, 60);
+	titleBanner2->SetPosition(60, 30);
 	HTPScene->AddItem(titleBanner2);
 
 	//************** How To Play Banner ******************
@@ -183,6 +187,215 @@ void Game::HowToPlay(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	//****************************************************
 }
 
+void Game::Play(SDL_Renderer* _renderer, InputSystem* _inputSystem)
+{
+	//***************************************************
+	//***************** Forth Scene *********************
+	//***************************************************
+	Scene* PlayScene = new Scene();
+	gameEngine->GetSceneManager()->AddScene(PlayScene);
+
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(_renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 30);
+	PlayScene->AddItem(titleBanner2);
+
+	//**************** Board Image **********************
+	Item* boardImage = new TitleBanner(_renderer);
+	boardImage->LoadImage("Board.png");
+	boardImage->SetSize(420, 360);
+	boardImage->SetPosition(190, 140);
+	PlayScene->AddItem(boardImage);
+	//***************************************************
+	//************* columns indices ******************
+	SDL_Color textCorlor = { 0,128,255 };
+	int textSize = 40;
+	Text** columns;
+	columns = new Text * [7];
+	for (int i = 0; i < 7; i++)
+	{
+		std::stringstream strs;
+		strs << i+1;
+		std::string index = strs.str();
+		char* colIndex = (char*)index.c_str();
+		columns[i] = new Text(colIndex, textSize, _renderer, textCorlor);
+		columns[i]->SetPosition(215+i*58, 500);
+		PlayScene->AddItem(columns[i]);
+	}
+
+	//************** Player Turn Text *******************
+	SDL_Color playerTurnColor = { 250,10,10 };
+	int playerTurnFontSize = 24;
+	const char* playerTurnText = "Red Player Turn!";
+	Text* playerTurnDisplay = new Text(playerTurnText, playerTurnFontSize, _renderer);
+	playerTurnDisplay->SetPosition(270, 560);
+	PlayScene->AddItem(playerTurnDisplay);
+
+	//**************** Balls *****************************
+	TitleBanner*** balls;
+	balls = new TitleBanner * *[6];
+	for (int i = 0; i < 6; i++)
+	{
+		balls[i] = new TitleBanner * [7];
+		for (int j = 0; j < 7; j++)
+		{
+			balls[i][j] = new TitleBanner(_renderer);
+			//balls[i][j]->LoadImage("Blue_ball.png");
+			balls[i][j]->SetSize(60, 60);
+			balls[i][j]->SetPosition(190 + j * 60, 140 + i * 60);
+			PlayScene->AddItem(balls[i][j]);
+		}
+	}
+	//*************** GameManger *************************
+	GameManager* gameManager = new GameManager(_renderer, _inputSystem);
+	gameManager->SetPlayerTDisplay(playerTurnDisplay);
+	gameManager->SetBalls(balls);
+	gameManager->SetSceneManager(gameEngine->GetSceneManager());
+	gameManager->StartTurn();
+	PlayScene->AddItem(gameManager);
+
+	//******************* Colomn Selector ****************
+	ColumnSelector* columnSelector = new ColumnSelector(gameManager, _renderer, _inputSystem);
+	columnSelector->LoadImage("Button.png");
+	columnSelector->SetSize(60, 100);
+	for (int i = 0; i < 7; i++)
+	{
+		columnSelector->AddItem(columns[i]);
+	}
+	columnSelector->Initialize();
+	PlayScene->AddItem(columnSelector);
+}
+
+void Game::RedWin(SDL_Renderer* _renderer, InputSystem* _inputSystem)
+{
+	//***************************************************
+	//***************** Fifth Scene *********************
+	//***************************************************
+	Scene* redWin = new Scene();
+	gameEngine->GetSceneManager()->AddScene(redWin);
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(_renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 30);
+	redWin->AddItem(titleBanner2);
+	//****************** Red Ball ***********************
+	TitleBanner* redBall = new TitleBanner(_renderer);
+	redBall->LoadImage("Red_ball.png");
+	redBall->SetSize(200, 200);
+	redBall->SetPosition((width / 2) - 100, (height / 2) - 100);
+	redWin->AddItem(redBall);
+	
+	//******************* Win Message *******************
+	SDL_Color textColor = { 255,0,0 };
+	int textFontSize = 40;
+	Text* message = new Text("Red Player Wins", textFontSize, _renderer, textColor);
+	message->SetPosition(175, 400);
+	redWin->AddItem(message);
+
+	//******************** Back Banner ******************
+	TitleBanner* backBanner = new TitleBanner(_renderer);
+	backBanner->LoadImage("Back_orange.png");
+	backBanner->SetSize(185, 68);
+	backBanner->SetPosition((width / 2) - 92, 500);
+	redWin->AddItem(backBanner);
+
+	//**************** Back Selector *********************
+	LobbySelector* backSelector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	backSelector->LoadImage("Button.png");
+	backSelector->SetSize(350, 160);
+	backSelector->AddItem(backBanner);
+	backSelector->Initialize();
+	redWin->AddItem(backSelector);
+	//****************************************************
+}
+
+void Game::BlueWin(SDL_Renderer* _renderer, InputSystem* _inputSystem)
+{
+	//***************************************************
+	//***************** sixth Scene *********************
+	//***************************************************
+	Scene* blueWin = new Scene();
+	gameEngine->GetSceneManager()->AddScene(blueWin);
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(_renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 30);
+	blueWin->AddItem(titleBanner2);
+	//****************** Red Ball ***********************
+	TitleBanner* redBall = new TitleBanner(_renderer);
+	redBall->LoadImage("Blue_ball.png");
+	redBall->SetSize(200, 200);
+	redBall->SetPosition((width / 2) - 100, (height / 2) - 100);
+	blueWin->AddItem(redBall);
+
+	//******************* Win Message *******************
+	SDL_Color textColor = { 0,128,255 };
+	int textFontSize = 40;
+	Text* message = new Text("Blue Player Wins", textFontSize, _renderer, textColor);
+	message->SetPosition(175, 400);
+	blueWin->AddItem(message);
+
+	//******************** Back Banner ******************
+	TitleBanner* backBanner = new TitleBanner(_renderer);
+	backBanner->LoadImage("Back_orange.png");
+	backBanner->SetSize(185, 68);
+	backBanner->SetPosition((width / 2) - 92, 500);
+	blueWin->AddItem(backBanner);
+
+	//**************** Back Selector *********************
+	LobbySelector* backSelector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	backSelector->LoadImage("Button.png");
+	backSelector->SetSize(350, 160);
+	backSelector->AddItem(backBanner);
+	backSelector->Initialize();
+	blueWin->AddItem(backSelector);
+	//****************************************************
+}
+
+void Game::Draw(SDL_Renderer* _renderer, InputSystem* _inputSystem)
+{
+	//***************************************************
+	//***************** sixth Scene *********************
+	//***************************************************
+	Scene* draw = new Scene();
+	gameEngine->GetSceneManager()->AddScene(draw);
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(_renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 30);
+	draw->AddItem(titleBanner2);
+	
+
+	//******************* Win Message *******************
+	SDL_Color textColor = { 255,255,255 };
+	int textFontSize = 40;
+	Text* message = new Text("The Game is a Draw", textFontSize, _renderer, textColor);
+	message->SetPosition(110, 250);
+	draw->AddItem(message);
+
+	//******************** Back Banner ******************
+	TitleBanner* backBanner = new TitleBanner(_renderer);
+	backBanner->LoadImage("Back_orange.png");
+	backBanner->SetSize(185, 68);
+	backBanner->SetPosition((width / 2) - 92, 500);
+	draw->AddItem(backBanner);
+
+	//**************** Back Selector *********************
+	LobbySelector* backSelector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	backSelector->LoadImage("Button.png");
+	backSelector->SetSize(350, 160);
+	backSelector->AddItem(backBanner);
+	backSelector->Initialize();
+	draw->AddItem(backSelector);
+	//****************************************************
+	//gameEngine->GetSceneManager()->SetActive(draw);
+}
+
 Game::Game(const char* _title, int _width/*=WIDTH*/, int _height/*=HEIGHT*/)
 {
 	width = _width;
@@ -198,6 +411,10 @@ void Game::Start()
 	Lobby(renderer, inputSystem);
 	Rules(renderer, inputSystem);
 	HowToPlay(renderer, inputSystem);
+	Play(renderer, inputSystem);
+	RedWin(renderer, inputSystem);
+	BlueWin(renderer, inputSystem);
+	Draw(renderer, inputSystem);
 }
 
 void Game::Run()

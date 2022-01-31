@@ -11,7 +11,10 @@ InputSystem::InputSystem()
 	fire = false;
 	enter = false;
 	down = false;
-	numbers = new bool[10]{};
+	upKey = false;
+	downKey = false;
+	rightKey = false;
+	leftKey = false;
 }
 
 void InputSystem::SetHorizontal(float _horizontal)
