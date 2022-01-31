@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "TitleBanner.h"
-#include "Selector.h"
+#include "LobbySelector.h"
 #include "Scene.h"
 #include "Text.h"
 
@@ -44,7 +44,7 @@ void Game::Lobby(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	//gameEngine->GetSceneManager()->GetScene(0)->AddItem(play);
 
 	//************** Selector **************************
-	Selector* selector = new Selector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	LobbySelector* selector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
 	selector->LoadImage("Button.png");
 	selector->SetSize(620, 160);
 	selector->AddItem(rules);
@@ -110,10 +110,16 @@ void Game::Rules(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 	TitleBanner* backBanner = new TitleBanner(_renderer);
 	backBanner->LoadImage("Back_orange.png");
 	backBanner->SetSize(185, 68);
-	backBanner->SetPosition((width / 2) - 92, 480);
+	backBanner->SetPosition((width / 2) - 92, 520);
 	rulesScene->AddItem(backBanner);
 
-
+	//**************** Back Selector *********************
+	LobbySelector* backSelector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	backSelector->LoadImage("Button.png");
+	backSelector->SetSize(350, 160);
+	backSelector->AddItem(backBanner);
+	backSelector->Initialize();
+	rulesScene->AddItem(backSelector);
 	//****************************************************
 
 }

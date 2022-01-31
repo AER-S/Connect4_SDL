@@ -22,9 +22,8 @@ void Selector::TakeSelectedPosition()
 	position.y = (selectedItem->GetPosition().y + (selectedItem->GetPosition().h / 2)) - (position.h / 2);
 }
 
-Selector::Selector(SDL_Renderer* _renderer /*= NULL*/, InputSystem* _inputSystem /*= nullptr*/, SceneManager* _sceneManager /*= nullptr*/):Item(_renderer,_inputSystem)
+Selector::Selector(SDL_Renderer* _renderer /*= NULL*/, InputSystem* _inputSystem /*= nullptr*/):Item(_renderer,_inputSystem)
 {
-	sceneManager = _sceneManager;
 	selectedItem = nullptr;
 	step = 0;
 	initialized = false;
@@ -64,7 +63,4 @@ void Selector::Initialize()
 	}
 }
 
-void Selector::Press()
-{
-	sceneManager->SetActive(step + 2);
-}
+

@@ -1,11 +1,10 @@
 #pragma once
 #include "Item.h"
-#include "SceneManager.h"
 #include <vector>
 
 class Selector :public Item
 {
-	SceneManager* sceneManager;
+protected:
 	std::vector<Item*> itemsToSelectFrom;
 	Item* selectedItem;
 	int step;
@@ -16,10 +15,10 @@ class Selector :public Item
 	void TakeSelectedPosition();
 
 public:
-	Selector(SDL_Renderer* _renderer = NULL, InputSystem* _inputSystem = nullptr, SceneManager* _sceneManager = nullptr);
+	Selector(SDL_Renderer* _renderer = NULL, InputSystem* _inputSystem = nullptr);
 	void Update();
 	void AddItem(Item* _item);
 	void Initialize();
-	void Press();
+	virtual void Press()=0;
 };
 
