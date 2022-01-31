@@ -124,6 +124,65 @@ void Game::Rules(SDL_Renderer* _renderer, InputSystem* _inputSystem)
 
 }
 
+void Game::HowToPlay(SDL_Renderer* _renderer, InputSystem* _inputSystem)
+{
+	//***************************************************
+	//***************** Third Scene *********************
+	//***************************************************
+	Scene* HTPScene = new Scene();
+	gameEngine->GetSceneManager()->AddScene(HTPScene);
+
+	//**************** Title Banner *********************
+	Item* titleBanner2 = new TitleBanner(_renderer);
+	titleBanner2->LoadImage("Connet_4.png");
+	titleBanner2->SetSize(688, 115);
+	titleBanner2->SetPosition(60, 60);
+	HTPScene->AddItem(titleBanner2);
+
+	//************** How To Play Banner ******************
+	Item* howToPlay = new TitleBanner(_renderer);
+	howToPlay->LoadImage("Htp_orange.png");
+	howToPlay->SetSize(408, 68);
+	howToPlay->SetPosition((width / 2) - 204, (height / 2) - 94);
+	HTPScene->AddItem(howToPlay);
+
+	//************* How To Play line 1 ******************
+	SDL_Color textCorlor = { 0,128,255 };
+	int textSize = 22;
+	Text* htp1 = new Text("1. Game Start with player 1 red.", textSize, _renderer, textCorlor);
+	htp1->SetPosition(90, 300);
+	HTPScene->AddItem(htp1);
+
+	//************* How To Play line 2 *******************
+	Text* htp21 = new Text("2. In Each step choose the column in which", textSize, _renderer, textCorlor);
+	htp21->SetPosition(90, 330);
+	HTPScene->AddItem(htp21);
+	Text* htp22 = new Text(" you want to drop the ball.", textSize, _renderer, textCorlor);
+	htp22->SetPosition(128, 360);
+	HTPScene->AddItem(htp22);
+
+	//************* How to Play line 3 *******************
+	Text* htp3 = new Text("3. Rows will be filled from bottom to top in any column.", textSize, _renderer, textCorlor);
+	htp3->SetPosition(90, 390);
+	HTPScene->AddItem(htp3);
+
+	//**************** Back Banner ***********************
+	TitleBanner* backBanner = new TitleBanner(_renderer);
+	backBanner->LoadImage("Back_orange.png");
+	backBanner->SetSize(185, 68);
+	backBanner->SetPosition((width / 2) - 92, 460);
+	HTPScene->AddItem(backBanner);
+
+	//**************** Back Selector *********************
+	LobbySelector* backSelector = new LobbySelector(_renderer, _inputSystem, gameEngine->GetSceneManager());
+	backSelector->LoadImage("Button.png");
+	backSelector->SetSize(350, 160);
+	backSelector->AddItem(backBanner);
+	backSelector->Initialize();
+	HTPScene->AddItem(backSelector);
+	//****************************************************
+}
+
 Game::Game(const char* _title, int _width/*=WIDTH*/, int _height/*=HEIGHT*/)
 {
 	width = _width;
@@ -138,9 +197,7 @@ void Game::Start()
 	
 	Lobby(renderer, inputSystem);
 	Rules(renderer, inputSystem);
-	
-	
-	
+	HowToPlay(renderer, inputSystem);
 }
 
 void Game::Run()
